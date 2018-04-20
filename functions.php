@@ -29,7 +29,7 @@ function getAuthorizedUser() {
  *  Получает список пользователей
  */
 function getUsers() {
-    $fileData = file_get_contents(__DIR__ . '/data/users.json');
+    $fileData = file_get_contents(__DIR__ . '/data/login.json');
     $users = json_decode($fileData, true);
     if (empty($users)) {
         return [];

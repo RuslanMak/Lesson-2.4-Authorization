@@ -1,13 +1,13 @@
 [
   {
     "login": "admin",
-    "password": "pass",
+    "password": "admin",
     "username": "Администратор",
     "is_admin": 1
   },
   {
     "login": "user1",
-    "password": "pass1",
+    "password": "user1",
     "username": "Пользователь №1",
     "is_admin": 0
   }
