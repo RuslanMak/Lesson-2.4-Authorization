@@ -1,0 +1,22 @@
+[{
+  "number": 1,
+  "question": "2+2=?",
+  "variant1": 6,
+  "variant2": 2,
+  "variant3": 4,
+  "answer": 4
+}, {
+  "number": 2,
+  "question": "3+2=?",
+  "variant1": 4,
+  "variant2": 5,
+  "variant3": 6,
+  "answer": 5
+}, {
+  "number": 3,
+  "question": "8+2=?",
+  "variant1": 10,
+  "variant2": 9,
+  "variant3": 12,
+  "answer": 10
+}]
