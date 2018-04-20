@@ -9,6 +9,7 @@ if ($_FILES['userfile']['name'] != null) {
     echo "Новые тесты не были еще загружены!";
 }
 
+echo "<title>List</title>";
 echo "<br><br>";
 
 $json = file_get_contents(__DIR__ . '/test/test.json');
@@ -24,11 +25,22 @@ for ($i = 0; $i < count($data); $i++) {
     echo $data[$i]['answer'] . "<br><br>";
 }
 
-echo "<a href='test.php'><h1>Go to test</h1></a>";
+echo "<a href='test.php'><h2>Go to test</h2></a>";
 
+echo "<a href='certificate.php'><h2>Получить сертификат</h2></a>";
 
-echo "<a href='certificate.php'><h1>Получить сертификат</h1></a>";
+?>
 
-if (isAdmin()) {
-    echo "<a href='admin.php'><h1>Add test</h1></a>";
-}
+<!--Эта форма для удаления тестов-->
+<form action="" method="post">
+    <input type="hidden" name="delete" value="delete_test">
+    <?php
+    if (isAdmin()) {
+        echo "<a href='admin.php'><h2>Add test</h2></a>";
+        echo "<button type='submit'>Delete test</button>";
+        if ($_POST['delete'] == 'delete_test') {
+            unlink(__DIR__ . '/test/test.json');
+        }
+    }?>
+</form>
+
