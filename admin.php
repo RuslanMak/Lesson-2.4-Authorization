@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/functions.php';
 
-if (!isAdmin()) {
+if (!isAuthorized()) {
     http_response_code(403);
     echo 'Вам доступ запрещен!';
     echo "<h1>Ошибка 403!!!</h1>";

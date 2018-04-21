@@ -13,16 +13,27 @@ function login($login, $password) {
     return false;
 }
 
-function isAuthorized() {
+function isUser() {
     return !empty($_SESSION['user']);
 }
 
-function isAdmin() {
-    return isAuthorized() && $_SESSION['user']['is_admin'];
+function isAuthorized() {
+    return isUser() && $_SESSION['user']['password'];
 }
 
-function getAuthorizedUser() {
-    return $_SESSION['user'];
+/**
+ *  Для удаление последней строки в JSON
+ */
+function delLastSymbol() {
+    $file = file(__DIR__ . "/data/login.json"); // Считываем весь файл в массив
+    $n = count($file); // Подсчот количество строк в массиве
+
+    for ($i = 0; $i < $n; $i++) {
+        if ($i == ($n - 1)) unset($file[$i]);
+        $fp = fopen(__DIR__ . "/data/login.json", "w");
+        fputs($fp, implode("", $file));
+        fclose($fp);
+    }
 }
 
 /**

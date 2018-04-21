@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post">
         <div>
             <p>Вы можете войти как "ГОСТЬ" введя только "Логин"</p>
-            <label for="lg">Логин</label>
-            <input type="text" placeholder="Логин" name="login" id="lg" required>
+            <label for="lg">Введите ваше имя</label>
+            <input type="text" placeholder="Имя" name="login" id="lg" required>
         </div>
         <div>
             <label for="key">Пароль</label>
@@ -50,10 +50,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php
 
 echo "<pre>";
-print_r($_POST);
+//print_r($_POST);
+print_r($_SESSION['user']);
 
 echo "<br>";
 
-print_r($_SESSION);
+if ($_POST) {
+
+    delLastSymbol();
+
+    $l = $_POST['login'];
+    $p = $_POST['password'];
+
+    $fh = fopen(__DIR__ . '/data/login.json', 'a');
+    fwrite($fh, ",{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}\n]");
+    fclose($fh);
+}
 
 ?>

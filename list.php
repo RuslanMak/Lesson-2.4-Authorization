@@ -35,7 +35,7 @@ echo "<a href='certificate.php'><h2>Получить сертификат</h2></
 <form action="" method="post">
     <input type="hidden" name="delete" value="delete_test">
     <?php
-    if (isAdmin()) {
+    if (isAuthorized()) {
         echo "<a href='admin.php'><h2>Add test</h2></a>";
         echo "<button type='submit'>Delete test</button>";
         if ($_POST['delete'] == 'delete_test') {
