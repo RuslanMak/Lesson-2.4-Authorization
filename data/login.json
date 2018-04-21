@@ -1,14 +1,12 @@
-[
-  {
+[{
     "login": "admin",
-    "password": "admin",
-    "username": "Администратор",
-    "is_admin": 1
+    "password": "admin"
   },
-  {
-    "login": "user1",
-    "password": "user1",
-    "username": "Пользователь №1",
-    "is_admin": 0
-  }
-]
+{
+"login":"Ruslan",
+"password":"1111"
+},
+{
+"login":"Bobd",
+"password":""
+}]

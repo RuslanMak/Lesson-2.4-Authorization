@@ -2,17 +2,23 @@
 
 require_once __DIR__ . '/functions.php';
 
-$errors = [];
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
     if (login($login, $password)) {
-//        redirect('index');
+        echo "Ok";
     } else {
-        $errors[] = 'Логин или пароль неверные';
+        delLastSymbol();
+
+        $l = $_POST['login'];
+        $p = $_POST['password'];
+
+        $fh = fopen(__DIR__ . '/data/login.json', 'a');
+        fwrite($fh, "},\n{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}]");
+        fclose($fh);
     }
+    redirect('list');
 }
 ?>
 
@@ -27,11 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h1>Авторизация</h1>
-    <ul>
-        <? foreach ($errors as $error): ?>
-            <li><?= $error ?></li>
-        <? endforeach; ?>
-    </ul>
     <form action="" method="post">
         <div>
             <p>Вы можете войти как "ГОСТЬ" введя только "Логин"</p>
@@ -51,20 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 echo "<pre>";
 //print_r($_POST);
-print_r($_SESSION['user']);
+//print_r($_SESSION['user']);
 
 echo "<br>";
 
-if ($_POST) {
-
-    delLastSymbol();
-
-    $l = $_POST['login'];
-    $p = $_POST['password'];
-
-    $fh = fopen(__DIR__ . '/data/login.json', 'a');
-    fwrite($fh, ",{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}\n]");
-    fclose($fh);
-}
+//if ($_POST) {
+//
+//    delLastSymbol();
+//
+//    $l = $_POST['login'];
+//    $p = $_POST['password'];
+//
+//    $fh = fopen(__DIR__ . '/data/login.json', 'a');
+//    fwrite($fh, ",{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}\n]");
+//    fclose($fh);
+//}
 
 ?>

@@ -10,14 +10,23 @@ if ($data[0]['number'] == false) {
     echo "Ошибка 404!!! Загрузите сначала соответствующие тесты!!!!";
     exit;
 }
+
+if (!isAuthorized()) {
+    http_response_code(403);
+    echo 'Вам доступ запрещен!';
+    echo "<h1>Ошибка 403!!!</h1>";
+    echo 'Сначала пройдите авторизацию!!!' . "<br>";
+    echo "<a href='index.php'>Пройти авторизацию -></a>";
+    die;
+}
 ?>
 
 <h2>Дайте ответы на вопроссы</h2>
 <form action="test.php" method="post">
-    <label>
-        <p>Введите ваше имя</p>
-        <input type="text" name="FirstName" required><br>
-    </label>
+<!--    <label>-->
+<!--        <p>Введите ваше имя</p>-->
+<!--        <input type='text' name='user' required><br>-->
+<!--    </label>-->
     <?php for ($i = 0; $i < count($data); $i++): ?>
     <p><?php echo$data[$i]['number'] . ") " . $data[$i]['question'] ?></p>
     <input type="radio" name="<?php echo $data[$i]['number'] ?>" value="<?php echo $data[$i]['variant1'] ?>">
@@ -33,13 +42,14 @@ if ($data[0]['number'] == false) {
 
 <?php
 
-echo $_POST['FirstName'];
-echo "<br><br>";
-
 $v = 1;
 $mark = 0;
 
-if ($_POST['FirstName'] != null) {
+if ($_POST[1] != null) {
+
+    echo $_SESSION['user']['login'];
+    echo "<br><br>";
+
     for ($i = 0; $i < count($data); $i++) {
 
         $num_answer = $data[$i]['number'];
@@ -58,7 +68,7 @@ if ($_POST['FirstName'] != null) {
     }
     echo "<br>" . "Оценка: " . $mark. "<br>";
 
-    $conclusion = strval($_POST['FirstName'] . "! Your mark is: " . $mark);
+    $conclusion = strval($_SESSION['user']['login'] . "! Your mark is: " . $mark);
 }
 ?>
 
