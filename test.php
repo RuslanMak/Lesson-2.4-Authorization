@@ -5,13 +5,15 @@ require_once __DIR__ . '/functions.php';
 $json = file_get_contents(__DIR__ . '/test/test.json');
 $data = json_decode($json, true);
 
+//print_r($_SESSION['user']['login']);
+
 if ($data[0]['number'] == false) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
     echo "Ошибка 404!!! Загрузите сначала соответствующие тесты!!!!";
     exit;
 }
 
-if (!isAuthorized()) {
+if (!isUser()) {
     http_response_code(403);
     echo 'Вам доступ запрещен!';
     echo "<h1>Ошибка 403!!!</h1>";
@@ -21,7 +23,7 @@ if (!isAuthorized()) {
 }
 ?>
 
-<h2>Дайте ответы на вопроссы</h2>
+<h2><?php echo $_SESSION['user']['login'] ?>, дайте ответы на вопроссы</h2>
 <form action="test.php" method="post">
 <!--    <label>-->
 <!--        <p>Введите ваше имя</p>-->

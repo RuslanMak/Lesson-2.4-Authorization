@@ -14,7 +14,7 @@ function login($login, $password) {
 }
 
 function isUser() {
-    return !empty($_SESSION['user']);
+    return !empty($_SESSION['user']['login']);
 }
 
 function isAuthorized() {

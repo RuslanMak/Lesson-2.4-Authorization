@@ -47,25 +47,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 </body>
 </html>
-
-<?php
-
-echo "<pre>";
-//print_r($_POST);
-//print_r($_SESSION['user']);
-
-echo "<br>";
-
-//if ($_POST) {
-//
-//    delLastSymbol();
-//
-//    $l = $_POST['login'];
-//    $p = $_POST['password'];
-//
-//    $fh = fopen(__DIR__ . '/data/login.json', 'a');
-//    fwrite($fh, ",{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}\n]");
-//    fclose($fh);
-//}
-
-?>
