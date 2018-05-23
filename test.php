@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/functions.php';
 
-$json = file_get_contents(__DIR__ . '/test/test.json');
-$data = json_decode($json, true);
+$file = $_POST['test'];
 
-//print_r($_SESSION['user']['login']);
+$json = file_get_contents(__DIR__ . '/' . $file);
+$data = json_decode($json, true);
 
 if ($data[0]['number'] == false) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');

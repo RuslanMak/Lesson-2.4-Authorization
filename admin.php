@@ -7,6 +7,14 @@ if (!isAuthorized()) {
     echo "<h1>Ошибка 403!!!</h1>";
     die;
 }
+
+if ($_FILES['userfile']['name'] != null) {
+    $name = $_FILES['userfile']['name'];
+    move_uploaded_file($_FILES['userfile']['tmp_name'], 'test/' . "$name");
+    header('Location: list.php');
+} else {
+    echo "Новые тесты не были еще загружены!";
+}
 ?>
 
 <!doctype html>
@@ -20,7 +28,7 @@ if (!isAuthorized()) {
 </head>
 <body>
 <h1>Add test</h1>
-<form enctype="multipart/form-data" action="list.php" method="post">
+<form enctype="multipart/form-data" method="post">
     <input name="userfile" type="file">
     <input type="submit" value="Send">
 </form>
