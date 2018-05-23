@@ -5,10 +5,8 @@ require_once __DIR__ . '/functions.php';
 $file_list = glob('test/*.json');
 
 // удаление теста
-$delete = (isset($_POST['delete']));
-
-if ($delete) {
-    unlink(__DIR__ . '/' . $delete);
+if (isset($_POST['delete'])) {
+    unlink(__DIR__ . '/' . $_POST['delete']);
     redirect('list');
 }
 
