@@ -13,4 +13,3 @@ if ($_POST['conclusion'] != false) {
     echo "<h1>Ошибка 404!!!!<br>Пройдите сначало тесты!!!</h1>";
     echo "<a href='test.php'><h2>Go to test</h2></a>";
 }
-?>

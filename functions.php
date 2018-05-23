@@ -50,7 +50,7 @@ function getUsers() {
 
 function redirect($page) {
     header("Location: $page.php");
-    die;
+//    die;
 }
 /**
  *  Получает пользователя по его логину

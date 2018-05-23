@@ -8,7 +8,7 @@ $json = file_get_contents(__DIR__ . '/' . $file);
 $data = json_decode($json, true);
 
 if ($data[0]['number'] == false) {
-    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+//    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
     echo "Ошибка 404!!! Загрузите или выберете сначала соответствующие тесты!!!!";
     echo "<br>"."<a href='list.php'>Выбрать тест -></a>";
     exit;
