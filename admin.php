@@ -8,7 +8,7 @@ if (!isAuthorized()) {
     die;
 }
 
-if ($_FILES['userfile']['name'] != null) {
+if (isset($_FILES['userfile']['name'])) {
     $name = $_FILES['userfile']['name'];
     move_uploaded_file($_FILES['userfile']['tmp_name'], 'test/' . "$name");
     header('Location: list.php');

@@ -5,15 +5,43 @@ require_once __DIR__ . '/functions.php';
 $file_list = glob('test/*.json');
 
 // удаление теста
-$delete = $_POST['delete'];
+$delete = (isset($_POST['delete']));
 
 if ($delete) {
     unlink(__DIR__ . '/' . $delete);
     redirect('list');
 }
 
-?>
+//--------------------------------Вариант 2-----------------------------
+//================== Это альтернатива нижнему коду!!! Не пойму причини почему не работает "Вариант 1"
+echo "<h3>Выберите теста для прохождения:</h3>";
+echo "<form method='post' action='test.php'>";
+$c = 1;
+foreach ($file_list as $key => $file) {
+    echo "<label><input type='radio' name='test' value='" . $file . "' required>Test " . $c . "</label><br>";
+    $c++;
+}
+echo "<input type='submit' value='Пройти тест'>";
+echo "</form>";
 
+if (isAuthorized()) {
+    echo "<form method='post'>";
+        echo "<h2><a href='admin.php'>Add test</a></h2>";
+        foreach ($file_list as $key => $file) {
+            echo "<label><input type='radio' name='delete' value='" . $file . "' required>" . $file . "</label><br>";
+        }
+        echo "<button type='submit'>Delete test</button>";
+    echo "</form>";
+}
+
+// Для вывода ошибки!!!
+echo "<h2><a href='certificate.php'>Получить сертификат</a></h2>";
+//=======================
+
+
+/**
+//---------------------- Вариант 1--------------------------------------------
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,7 +66,7 @@ if ($delete) {
 
 <!--Эта форма для удаления тестов-->
 <?php if (isAuthorized()) : ?>
-    <form action="" method="post">
+    <form method="post">
         <h2><a href='admin.php'>Add test</a></h2>
         <?php foreach ($file_list as $key => $file) : ?>
             <label><input type="radio" name="delete" value="<?php echo $file; ?>" required> <?php echo $file ?></label><br>
@@ -47,8 +75,11 @@ if ($delete) {
     </form>
 <?php endif; ?>
 
-
 <br>
 <h2><a href='certificate.php'>Получить сертификат</a></h2>
 </body>
 </html>
+
+ */
+
+
