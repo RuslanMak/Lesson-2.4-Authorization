@@ -26,15 +26,14 @@ if (!isUser()) {
 
 <h2><?php echo $_SESSION['user']['login'] ?>, дайте ответы на вопроссы</h2>
     <form action="test.php" method="post">
-        <label>
-            <input type="hidden" name="test" value="<?php echo $file ?>"><br>
-        </label>
+        <input type="hidden" name="test" value="<?php echo $file ?>">
+        <input type="hidden" name="result" value="result">
         <?php for ($i = 0; $i < count($data); $i++): ?>
             <p><?php echo$data[$i]['number'] . ") " . $data[$i]['question'] ?></p>
 
             <?php foreach ($data[$i]['variants'] as $k => $v) : ?>
-                <input type="radio" name="<?php echo $data[$i]['number'] ?>" value="<?php echo $v ?>">
-                <?php echo $v ?><br>
+                <label><input type="radio" name="<?php echo $data[$i]['number'] ?>" value="<?php echo $v ?>">
+                <?php echo $v ?></label><br>
             <?php endforeach; ?>
             <br>
         <?php endfor; ?>
@@ -42,13 +41,14 @@ if (!isUser()) {
     </form>
 
 <?php
-echo $_POST['FirstName'];
-echo "<br><br>";
 
 $v = 1;
 $mark = 0;
 
-if ($_POST['FirstName'] != null) {
+if ($_POST['result'] != null) {
+    echo $_SESSION['user']['login'];
+    echo "<br><br>";
+
     for ($i = 0; $i < count($data); $i++) {
 
         $num_answer = $data[$i]['number'];
@@ -75,7 +75,7 @@ if ($_POST['FirstName'] != null) {
 <form action="certificate.php" method="post">
     <input type="hidden" name="conclusion" value="<?php echo $conclusion ?>">
     <?php
-    if ($_POST[1] != null) {
+    if ($mark >= 1) {
         echo "<h2>Желаете получить сертификат?</h2>";
         echo "<button type='submit'>Получить сертификат</button>";
     }?>
