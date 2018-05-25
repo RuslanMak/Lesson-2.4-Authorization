@@ -45,7 +45,7 @@ if (!isUser()) {
 $v = 1;
 $mark = 0;
 
-if ($_POST['result'] != null) {
+if ($_POST['result']) {
     echo $_SESSION['user']['login'];
     echo "<br><br>";
 
@@ -67,7 +67,7 @@ if ($_POST['result'] != null) {
     }
     echo "<br>" . "Оценка: " . $mark. "<br>";
 
-    $conclusion = strval($_POST['FirstName'] . "! Your mark is: " . $mark);
+    $conclusion = strval($_SESSION['user']['login'] . "! Your mark is: " . $mark);
 }
 ?>
 

@@ -1,9 +1,6 @@
 <?php
-
 require_once __DIR__ . '/functions.php';
-
 $file_list = glob('test/*.json');
-
 // удаление теста
 if (isset($_POST['delete'])) {
     unlink(__DIR__ . '/' . $_POST['delete']);
@@ -27,9 +24,9 @@ if (isset($_POST['delete'])) {
     <?php
     $c = 1;
     foreach ($file_list as $key => $file) : ?>
-        <label><input type="radio" name="test" value="<?php echo $file; ?>" required>Test <?php echo $c ?></label><br>
+        <label><input type="radio" name="test" value="<?php echo $file; ?>" required>Test <?php echo $c; ?></label><br>
         <?php $c++; ?>
-    <? endforeach; ?>
+    <?php endforeach; ?>
     <input type="submit" value="Пройти тест">
 </form>
 
@@ -38,8 +35,8 @@ if (isset($_POST['delete'])) {
     <form method="post">
         <h2><a href='admin.php'>Add test</a></h2>
         <?php foreach ($file_list as $key => $file) : ?>
-            <label><input type="radio" name="delete" value="<?php echo $file; ?>" required> <?php echo $file ?></label><br>
-        <? endforeach; ?>
+            <label><input type="radio" name="delete" value="<?php echo $file; ?>" required> <?php echo $file; ?></label><br>
+        <?php endforeach; ?>
         <button type='submit'>Delete test</button>
     </form>
 <?php endif; ?>
@@ -48,6 +45,3 @@ if (isset($_POST['delete'])) {
 <h2><a href='certificate.php'>Получить сертификат</a></h2>
 </body>
 </html>
-
-
-
