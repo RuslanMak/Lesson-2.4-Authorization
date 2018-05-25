@@ -1,0 +1,59 @@
+[
+  {
+    "number": 1,
+    "question": "20+22=?",
+    "variants":
+    {
+      "variant1": 16,
+      "variant2": 42,
+      "variant3": 82,
+      "variant4": 44
+    },
+    "answer": 42
+  },
+  {
+    "number": 2,
+    "question": "20+5=?",
+    "variants":
+    {
+      "variant1": 16,
+      "variant2": 12,
+      "variant3": 25,
+      "variant4": 27
+    },
+    "answer": 25
+  },
+  {
+    "number": 3,
+    "question": "30+2=?",
+    "variants":
+    {
+      "variant1": 32,
+      "variant2": 35,
+      "variant3": 36
+    },
+    "answer": 32
+  },
+  {
+    "number": 4,
+    "question": "3+9=?",
+    "variants":
+    {
+      "variant1": 10,
+      "variant2": 12,
+      "variant3": 9
+    },
+    "answer": 12
+  },
+  {
+    "number": 5,
+    "question": "18+2=?",
+    "variants":
+    {
+      "variant1": 30,
+      "variant2": 19,
+      "variant3": 20
+    },
+    "answer": 20
+  }
+]

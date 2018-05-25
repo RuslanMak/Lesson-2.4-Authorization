@@ -5,9 +5,11 @@ require_once __DIR__ . '/functions.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login = $_POST['login'];
     $password = $_POST['password'];
+//    $password = isset($_POST['password']);
 
     if (login($login, $password)) {
-        echo "Ok";
+        redirect('list');
+        exit;
     } else {
         delLastSymbol();
 
@@ -17,10 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fh = fopen(__DIR__ . '/data/login.json', 'a');
         fwrite($fh, "},\n{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}]");
         fclose($fh);
+        echo "Для проверки личности введите повторно ваше имя!!!";
     }
-    redirect('list');
-    exit;
+
 }
+
 ?>
 
 <!doctype html>
