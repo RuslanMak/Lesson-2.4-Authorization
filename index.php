@@ -10,7 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (login($login, $password)) {
         redirect('list');
         exit;
-    } else {
+    } elseif (getUser($login)) {
+        echo "<strong style='color: red'>Такой пользователь уже существует!!! Введите другое имя!</strong>";
+    }
+    else {
         delLastSymbol();
 
         $l = $_POST['login'];
@@ -19,9 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fh = fopen(__DIR__ . '/data/login.json', 'a');
         fwrite($fh, "},\n{\n\"login\":\"$l\",\n\"password\":\"$p\"\n}]");
         fclose($fh);
-        echo "Для проверки личности введите повторно ваше имя!!!";
+        echo "<strong style='color: red'>Для проверки личности введите повторно ваше имя!!!</strong>";
     }
-
 }
 
 ?>
